@@ -25,6 +25,16 @@ function processUserCommands(input) {
       }
       break;
 
+    case 'park':
+      try {
+        parkingSlotNumber = parkingLotService.parkCar(input);
+        console.log(chalk.green('Allocated slot number: ' + parkingSlotNumber));
+      }
+      catch (err) {
+        console.log(chalk.red.bold(err.message));
+      }
+      break;
+
     case 'exit':
       process.exit(0);
     default:
