@@ -4,7 +4,7 @@
   "description": "Parking Lot Management Service",
   "main": "index.js",
   "scripts": {
-    "start":"node src/index.js",
+    "start": "node src/index.js",
     "test": "jest",
     "test:cov": "npm run test -- --coverage"
   },
