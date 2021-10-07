@@ -93,6 +93,8 @@ Slot No.  Registration No.
 
 ## _Code Coverage_
 
+[![Statement](./assets/badge-statements.svg)]
+
 To see code coverage report, run `npm run test:cov`.
 
 The current code coverage for the tests are following:
