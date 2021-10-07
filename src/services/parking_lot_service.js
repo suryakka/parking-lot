@@ -96,6 +96,26 @@ class ParkingLotService {
 
 
   /**
+   * @description Returns an array containing parking details i.e. slot no, registration number
+   */
+  getParkingStatus() {
+    var arr = new Array();
+    if (parkingLot.MAX_PARKING_SLOTS > 0) {
+      arr.push('Slot No. Registration.');
+      var slots = parkingLot.parkingSlots.filter(element => element != null);
+      for (var i = 0; i < slots.length; i++) {
+        var e = i + 1;
+        arr.push(e + '.  ' + slots[i].NUMBER);
+      }
+      return arr;
+    }
+    else {
+      throw new Error('Sorry, parking lot is empty');
+    }
+  }
+
+  
+  /**
    * @description check parking slot is available or not.
    */
   isParkingSlotAvailable() {
