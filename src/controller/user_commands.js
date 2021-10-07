@@ -51,12 +51,7 @@ function processUserCommands(input) {
     case 'status':
       try {
         var parkingSlotStatus = parkingLotService.getParkingStatus();
-        if (parkingSlotStatus.length > 1) {
-          console.log(parkingSlotStatus.join('\n'));
-        }
-        else {
-          console.log(chalk.yellow('Sorry, parking lot is empty')); // what if it's empty
-        }
+        console.log(parkingSlotStatus.join('\n'));
       }
       catch (err) {
         console.log(chalk.red.bold(err.message));
