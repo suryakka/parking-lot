@@ -56,6 +56,29 @@ class ParkingLotService {
     }
   }
 
+  /**
+   *
+   * @param {String} input user's input via terminal
+   * @description it makes the slot free for the car of given registration number.
+   * It throws an error if car is not found.
+   */
+  leave(input) {
+    var carNumber = input.split(' ')[1];
+    var hour = parseInt(input.split(' ')[2]);
+    if (carNumber) {
+      if (hour) {
+        var index = parkingLot.parkingSlots.findIndex(element => element?.NUMBER === carNumber);
+        if (index != null) {
+          parkingLot.parkingSlots[index] = null;
+          return index + 1;
+        }
+        throw new Error('Registration number ' + carNumber + ' not found');
+
+      } else {
+        throw new Error('Please provide parking duration');
+      }
+    } else { throw new Error('Please provide Registration number'); }
+  }
 
   /**
    * @description check parking slot is available or not.
