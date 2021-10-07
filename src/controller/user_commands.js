@@ -47,7 +47,22 @@ function processUserCommands(input) {
         console.log(chalk.red(err.message)); // handling exceptions
       }
       break;
-      
+
+    case 'status':
+      try {
+        var parkingSlotStatus = parkingLotService.getParkingStatus();
+        if (parkingSlotStatus.length > 1) {
+          console.log(parkingSlotStatus.join('\n'));
+        }
+        else {
+          console.log(chalk.yellow('Sorry, parking lot is empty')); // what if it's empty
+        }
+      }
+      catch (err) {
+        console.log(chalk.red.bold(err.message));
+      }
+      break;
+
     case 'exit':
       process.exit(0);
     default:
