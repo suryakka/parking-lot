@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1633626275306" clover="3.2.0">
+  <project timestamp="1633626275306" name="All files">
+    <metrics statements="95" coveredstatements="95" conditionals="32" coveredconditionals="32" methods="15" coveredmethods="15" elements="142" coveredelements="142" complexity="0" loc="95" ncloc="95" packages="3" files="5" classes="5"/>
+    <package name="controller">
+      <metrics statements="32" coveredstatements="32" conditionals="6" coveredconditionals="6" methods="1" coveredmethods="1"/>
+      <file name="user_commands.js" path="D:\WORKSTATION\PROJECT\NewParkingLot\ParkingLot\src\controller\user_commands.js">
+        <metrics statements="32" coveredstatements="32" conditionals="6" coveredconditionals="6" methods="1" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="13" count="26" type="stmt"/>
+        <line num="17" count="26" type="stmt"/>
+        <line num="18" count="26" type="cond" truecount="6" falsecount="0"/>
+        <line num="20" count="10" type="stmt"/>
+        <line num="21" count="10" type="stmt"/>
+        <line num="22" count="9" type="stmt"/>
+        <line num="25" count="1" type="stmt"/>
+        <line num="27" count="10" type="stmt"/>
+        <line num="30" count="9" type="stmt"/>
+        <line num="31" count="9" type="stmt"/>
+        <line num="32" count="7" type="stmt"/>
+        <line num="35" count="2" type="stmt"/>
+        <line num="37" count="9" type="stmt"/>
+        <line num="40" count="3" type="stmt"/>
+        <line num="41" count="3" type="stmt"/>
+        <line num="42" count="2" type="stmt"/>
+        <line num="43" count="2" type="stmt"/>
+        <line num="44" count="2" type="stmt"/>
+        <line num="48" count="1" type="stmt"/>
+        <line num="50" count="3" type="stmt"/>
+        <line num="53" count="2" type="stmt"/>
+        <line num="54" count="2" type="stmt"/>
+        <line num="55" count="1" type="stmt"/>
+        <line num="58" count="1" type="stmt"/>
+        <line num="60" count="2" type="stmt"/>
+        <line num="63" count="1" type="stmt"/>
+        <line num="65" count="2" type="stmt"/>
+        <line num="66" count="2" type="stmt"/>
+        <line num="70" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="models">
+      <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+      <file name="car.js" path="D:\WORKSTATION\PROJECT\NewParkingLot\ParkingLot\src\models\car.js">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="4" count="8" type="stmt"/>
+        <line num="8" count="2" type="stmt"/>
+      </file>
+      <file name="parking_lot.js" path="D:\WORKSTATION\PROJECT\NewParkingLot\ParkingLot\src\models\parking_lot.js">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="5" count="45" type="stmt"/>
+        <line num="6" count="45" type="stmt"/>
+        <line num="11" count="2" type="stmt"/>
+      </file>
+      <file name="parking_slot.js" path="D:\WORKSTATION\PROJECT\NewParkingLot\ParkingLot\src\models\parking_slot.js">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="8" count="2" type="stmt"/>
+      </file>
+    </package>
+    <package name="services">
+      <metrics statements="55" coveredstatements="55" conditionals="26" coveredconditionals="26" methods="11" coveredmethods="11"/>
+      <file name="parking_lot_service.js" path="D:\WORKSTATION\PROJECT\NewParkingLot\ParkingLot\src\services\parking_lot_service.js">
+        <metrics statements="55" coveredstatements="55" conditionals="26" coveredconditionals="26" methods="11" coveredmethods="11"/>
+        <line num="2" count="2" type="stmt"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="17" count="12" type="stmt"/>
+        <line num="19" count="12" type="cond" truecount="4" falsecount="0"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="23" count="11" type="stmt"/>
+        <line num="24" count="11" type="stmt"/>
+        <line num="25" count="45" type="stmt"/>
+        <line num="27" count="11" type="stmt"/>
+        <line num="37" count="12" type="cond" truecount="2" falsecount="0"/>
+        <line num="39" count="11" type="cond" truecount="2" falsecount="0"/>
+        <line num="40" count="10" type="stmt"/>
+        <line num="41" count="10" type="cond" truecount="2" falsecount="0"/>
+        <line num="42" count="1" type="stmt"/>
+        <line num="44" count="36" type="cond" truecount="2" falsecount="0"/>
+        <line num="45" count="1" type="stmt"/>
+        <line num="47" count="8" type="stmt"/>
+        <line num="48" count="8" type="stmt"/>
+        <line num="49" count="8" type="stmt"/>
+        <line num="50" count="8" type="stmt"/>
+        <line num="54" count="1" type="stmt"/>
+        <line num="57" count="1" type="stmt"/>
+        <line num="68" count="6" type="cond" truecount="2" falsecount="0"/>
+        <line num="69" count="5" type="stmt"/>
+        <line num="70" count="5" type="stmt"/>
+        <line num="71" count="5" type="cond" truecount="2" falsecount="0"/>
+        <line num="72" count="5" type="cond" truecount="2" falsecount="0"/>
+        <line num="73" count="1" type="stmt"/>
+        <line num="75" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="76" count="2" type="stmt"/>
+        <line num="78" count="2" type="stmt"/>
+        <line num="79" count="2" type="stmt"/>
+        <line num="82" count="1" type="stmt"/>
+        <line num="86" count="1" type="stmt"/>
+        <line num="97" count="2" type="stmt"/>
+        <line num="98" count="2" type="stmt"/>
+        <line num="99" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="100" count="1" type="stmt"/>
+        <line num="102" count="2" type="stmt"/>
+        <line num="110" count="2" type="stmt"/>
+        <line num="111" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="112" count="1" type="stmt"/>
+        <line num="113" count="6" type="stmt"/>
+        <line num="114" count="1" type="stmt"/>
+        <line num="115" count="1" type="stmt"/>
+        <line num="117" count="1" type="stmt"/>
+        <line num="120" count="1" type="stmt"/>
+        <line num="129" count="11" type="stmt"/>
+        <line num="130" count="11" type="stmt"/>
+        <line num="131" count="40" type="cond" truecount="2" falsecount="0"/>
+        <line num="132" count="38" type="stmt"/>
+        <line num="135" count="11" type="stmt"/>
+        <line num="140" count="2" type="stmt"/>
+      </file>
+    </package>
+  </project>
+</coverage>
