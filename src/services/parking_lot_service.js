@@ -80,6 +80,21 @@ class ParkingLotService {
     } else { throw new Error('Please provide Registration number'); }
   }
 
+
+  /**
+   * @param {String} input user's input via terminal
+   * @description Return a parking charge. Charge applicable is $10 for first 2 hours and $10 for every additional hour.
+   */
+  getParkingCharge(input) {
+    var hour = parseInt(input.split(' ')[2]);
+    var charge = 20;
+    if (hour > 2) {
+      charge += ((hour - 2) * 10);
+    }
+    return charge;
+  }
+
+
   /**
    * @description check parking slot is available or not.
    */
