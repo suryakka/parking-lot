@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node src/index.js",
     "test": "jest",
-    "test:cov": "npm run test -- --coverage"
+    "test:cov": "npm run test -- --coverage",
+    "test:badges": "npm run test:coverage  && jest-coverage-badges"
   },
   "repository": {
     "type": "git",
@@ -24,6 +25,11 @@
   },
   "jest": {
     "coverageDirectory": "./coverage/",
-    "collectCoverage": true
+    "collectCoverage": true,
+    "coverageReporters": [
+      "json-summary",
+      "text",
+      "lcov"
+    ]
   }
 }
