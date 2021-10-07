@@ -1,7 +1,9 @@
-var Parking = require('../models/parking_lot.js');
-var Car = require('../models/car.js');
 
-parkingLot = new Parking();
+var ParkingLot = require('../models/parking_lot.js');
+var Car = require('../models/car.js');
+const ParkingSlot = require('../models/parking_slot.js');
+
+var parkingLot = new ParkingSlot();
 
 class ParkingLotService {
 
@@ -13,12 +15,14 @@ class ParkingLotService {
    */
   createParkingLot(input) {
     parkingLot.MAX_PARKING_SLOTS = parseInt(input.split(' ')[1]);
-    if (this.MAX_PARKING_SLOTS <= 0) {
+
+    if (parkingLot.MAX_PARKING_SLOTS == 0 || !parkingLot.MAX_PARKING_SLOTS) {
       // minimum: 1 slot
       throw new Error('Minimum one slot is required to create parking slot');
     }
+    parkingLot.parkingSlots = [];
     for (var i = 0; i < parkingLot.MAX_PARKING_SLOTS; i++) {
-      parkingLot.parkingSlots.push(null);
+      parkingLot.parkingSlots.push(new ParkingLot(null, i));
     }
     return parkingLot.MAX_PARKING_SLOTS;
   }
@@ -31,28 +35,26 @@ class ParkingLotService {
    */
   parkCar(input) {
     if (parkingLot.MAX_PARKING_SLOTS > 0) {
-      var car, carNumber;
+      var carNumber;
       if (this.isParkingSlotAvailable(parkingLot.parkingSlots) == true) {
         carNumber = input.split(' ')[1];
-        if (parkingLot.parkingSlots.find(element => element?.NUMBER == carNumber)) {
-          throw new Error('Car with registration number ' + carNumber + ' is already parked');
-        }
-        var index = parkingLot.parkingSlots.findIndex(element => element == null);
-        if (index != null) {
-          car = new Car(carNumber);
-          parkingLot.parkingSlots[index] = car;
-          index = index + 1;
-          return index;
-        } else {
+        if (carNumber == null) {
           throw new Error('Please provide registration number');
         }
+        if (parkingLot.parkingSlots.find(element => element?.CAR?.NUMBER == carNumber)) {
+          throw new Error('Car with registration number ' + carNumber + ' is already parked');
+        }
+        var index = parkingLot.parkingSlots.findIndex(element => element.CAR == null);
+          parkingLot.parkingSlots[index].CAR = new Car(carNumber);
+          index = index + 1;
+          return index;
+        
       }
       else {
         throw new Error('Sorry, parking lot is full');
       }
-    }
-    else {
-      throw new Error('Minimum one slot is required to create parking slot');
+    } else {
+      throw new Error('Sorry, there is no parking lot created');
     }
   }
 
@@ -63,21 +65,27 @@ class ParkingLotService {
    * It throws an error if car is not found.
    */
   leave(input) {
-    var carNumber = input.split(' ')[1];
-    var hour = parseInt(input.split(' ')[2]);
-    if (carNumber) {
-      if (hour) {
-        var index = parkingLot.parkingSlots.findIndex(element => element?.NUMBER === carNumber);
-        if (index != null) {
-          parkingLot.parkingSlots[index] = null;
-          return index + 1;
-        }
+    if (parkingLot.MAX_PARKING_SLOTS > 0) {
+      var carNumber = input.split(' ')[1];
+      var hour = parseInt(input.split(' ')[2]);
+      if (!carNumber) { throw new Error('Please provide Registration number'); }
+      if (!parkingLot.parkingSlots.find(element => element?.CAR?.NUMBER == carNumber)) {
         throw new Error('Registration number ' + carNumber + ' not found');
-
+      }
+      if (hour) {
+        var index = parkingLot.parkingSlots.findIndex(element => element?.CAR?.NUMBER === carNumber);
+    
+          parkingLot.parkingSlots[index].CAR = null;
+          return index + 1;
+   
       } else {
         throw new Error('Please provide parking duration');
       }
-    } else { throw new Error('Please provide Registration number'); }
+    }
+    else {
+      throw new Error('Sorry, there is no parking lot created');
+    }
+
   }
 
 
@@ -102,10 +110,9 @@ class ParkingLotService {
     var arr = new Array();
     if (parkingLot.MAX_PARKING_SLOTS > 0) {
       arr.push('Slot No. Registration.');
-      var slots = parkingLot.parkingSlots.filter(element => element != null);
+      var slots = parkingLot.parkingSlots.filter(element => element.CAR != null);
       for (var i = 0; i < slots.length; i++) {
-        var e = i + 1;
-        arr.push(e + '.  ' + slots[i].NUMBER);
+        arr.push(slots[i].SLOT + 1 + '.  ' + slots[i].CAR.NUMBER);
       }
       return arr;
     }
@@ -114,14 +121,14 @@ class ParkingLotService {
     }
   }
 
-  
+
   /**
    * @description check parking slot is available or not.
    */
   isParkingSlotAvailable() {
     var isAvailable = false;
     for (var i = 0; i < parkingLot.parkingSlots.length; i++) {
-      if (parkingLot.parkingSlots[i] == null) {
+      if (parkingLot.parkingSlots[i].CAR == null) {
         isAvailable = true;
       }
     }
