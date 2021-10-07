@@ -35,6 +35,19 @@ function processUserCommands(input) {
       }
       break;
 
+    case 'leave':
+      try {
+        parkingSlotNumber = parkingLotService.leave(input);
+        parkingCharge = parkingLotService.getParkingCharge(input);
+        var registrationNumber = input.split(' ')[1];
+        console.log(chalk.blue('Registration number ' + registrationNumber + ' with Slot number ' + parkingSlotNumber + ' is free with Charge ' + parkingCharge));
+
+      }
+      catch (err) {
+        console.log(chalk.red(err.message)); // handling exceptions
+      }
+      break;
+      
     case 'exit':
       process.exit(0);
     default:
