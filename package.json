@@ -1,0 +1,19 @@
+{
+  "name": "parking_lot",
+  "version": "1.0.0",
+  "description": "Parking Lot Management Service",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/suryakka/parking-lot.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/suryakka/parking-lot/issues"
+  },
+  "homepage": "https://github.com/suryakka/parking-lot#readme"
+}
