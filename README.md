@@ -1,6 +1,6 @@
 # Parking Lot
 ## _Problem Statement_
-[![GitHub last commit](https://img.shields.io/github/last-commit/suryakka/parking-lot?logo=github)](https://github.com/suryakka/parking-lott/) ![Snyk Vulnerabilities for GitHub Repo](https://img.shields.io/snyk/vulnerabilities/github/suryakka/parking-lot?logo=snyk&color=red)
+[ [![GitHub last commit](https://img.shields.io/github/last-commit/suryakka/parking-lot?logo=github)](https://github.com/suryakka/parking-lott/) ![Snyk Vulnerabilities for GitHub Repo](https://img.shields.io/snyk/vulnerabilities/github/suryakka/parking-lot?logo=snyk&color=red)
 
 - I own a parking lot that can hold up to ‘n’ cars at any given point in time. Each slot is
 given a number starting at 1 increasing with increasing distance from the entry point
@@ -91,9 +91,30 @@ Slot No.  Registration No.
 
 > **NOTE: Any commands which are not mentioned above will throw an error: `<INPUT> is an invalid command`**
 
+## _Code Coverage_
 
+To see code coverage report, run `npm run test:cov`.
+
+The current code coverage for the tests are following:
+
+| Type  | Percentage  |
+|---|---|
+| Statement  | 100 %  |
+| Branch  | 100 % |
+| Function  | 100 % |
+| Lines  | 100 % |
+
+- **Function coverage:** Has each function (or subroutine) in the program been called?
+- **Statement coverage:** Has each statement in the program been executed?
+- **Branch coverage:** Has each branch (also called DD-path) of each control structure (such as in if and case statements) been executed?
+- **Line coverage:** Has each executable line in the source file been executed?
+
+
+**NOTE:** You can see the code-coverage report in terminal as well as detailed HTML report inside `coverage/` folder.
+Go to `coverage/` folder and open `index.html`.
 ## _Dependencies Used_
 
 
-- [Chalk](https://www.npmjs.com/package/chalk): A npm module used to style terminal string. Learn more [here](https://www.npmjs.com/package/chalk).
+- [Chalk](https://www.npmjs.com/package/chalk) : A npm module used to style terminal string. Learn more [here](https://www.npmjs.com/package/chalk).
+- [Jest](https://www.npmjs.com/package/jest) : A JavaScript test framework for Node.js programs. Learn more [here](https://www.npmjs.com/package/jest).
 
