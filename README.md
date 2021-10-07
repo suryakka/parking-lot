@@ -93,7 +93,7 @@ Slot No.  Registration No.
 
 ## _Code Coverage_
 
-[![Statement](./assets/badge-statements.svg)](https://github.com/suryakka/parking-lot)[![Branch](./assets/badge-branches.svg)](https://github.com/suryakka/parking-lot)[![Function](./assets/badge-functions.svg)](https://github.com/suryakka/parking-lot)[![Lines](./assets/badge-lines.svg)](https://github.com/suryakka/parking-lot)
+[![Statement](./assets/badge-statements.svg)](https://github.com/suryakka/parking-lot) [![Branch](./assets/badge-branches.svg)](https://github.com/suryakka/parking-lot) [![Function](./assets/badge-functions.svg)](https://github.com/suryakka/parking-lot) [![Lines](./assets/badge-lines.svg)](https://github.com/suryakka/parking-lot)
 
 To see code coverage report, run `npm run test:cov`.
 
