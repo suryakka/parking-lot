@@ -32,7 +32,8 @@ class ParkingLotService {
    * @param {String} input user's input via terminal
    * @description allocates nearest slot number to incoming cars.
    * It throws an error if parking lot is empty or full.
-   * It also throws an error if only one field (either registration number or color) is provided.
+   * It throws an error if no registration number provided.
+   * It also throws an error if registration numbered entered is already parked.
    */
   parkCar(input) {
     if (parkingLot.MAX_PARKING_SLOTS > 0) {
@@ -63,7 +64,9 @@ class ParkingLotService {
    *
    * @param {String} input user's input via terminal
    * @description it makes the slot free for the car of given registration number.
-   * It throws an error if car is not found.
+   * It throws an error if parking lot is empty.
+   * It throws an error if no registration number or parking duration provided.
+   * It also throws an error if registration numbered entered is not found.
    */
   leave(input) {
     if (parkingLot.MAX_PARKING_SLOTS > 0) {
@@ -106,6 +109,7 @@ class ParkingLotService {
 
   /**
    * @description Returns an array containing parking details i.e. slot no, registration number
+   * It throws an error if parking lot is empty.
    */
   getParkingStatus() {
     var arr = new Array();
