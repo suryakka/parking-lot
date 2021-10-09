@@ -1,6 +1,9 @@
 #!/usr/bin/env node
 const fs = require('fs'),
   readLine = require('readline');
+const { ERROR_LOAD_FILE } = require('./constants/error_constant.js');
+
+  
 
 var commandLineInputs = process.argv, // processing command line inputs
   interactiveMode = false;
@@ -15,7 +18,7 @@ if (commandLineInputs[commandLineInputs.length - 1].endsWith('.txt')) {
   interactiveMode = false;
   fs.readFile(commandLineInputs[2], 'utf-8', function (err, data) {
     if (err) {
-      console.log('Error in reading file');
+      console.log(ERROR_LOAD_FILE);
     }
     var arr = data.split('\r\n');
     for (var i = 0; i < arr.length; i++) {
