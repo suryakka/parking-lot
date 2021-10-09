@@ -99,7 +99,7 @@ describe("leave command test", () => {
   test('leave error test', () => {
     const consoleSpy = jest.spyOn(console, 'log');
     processUserCommands('leave KK-1234-HH');
-    expect(consoleSpy).toHaveBeenCalledWith(chalk.red(ERROR_SERVICE.PLEASE_PROVIDE_PARKING_DURATION));
+    expect(consoleSpy).toHaveBeenCalledWith(chalk.red.bold(ERROR_SERVICE.PLEASE_PROVIDE_PARKING_DURATION));
   })
 });
 

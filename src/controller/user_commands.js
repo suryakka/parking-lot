@@ -46,7 +46,7 @@ function processUserCommands(input) {
 
       }
       catch (err) {
-        console.log(chalk.red(err.message)); // handling exceptions
+        console.log(chalk.red.bold(err.message)); // handling exceptions
       }
       break;
 
