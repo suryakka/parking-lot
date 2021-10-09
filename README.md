@@ -63,7 +63,7 @@ Open terminal and type `node src/index.js data/input.txt`.
 node src/index.js <path_to_file.txt>
 ```
 
-**Note**: You can find a few sample input files inside `assets/` folder : `node src/index.js assets/input.txt`.
+> **Note**: You can find a few sample input files inside `assets/` folder : `node src/index.js assets/input.txt`.
 
 ## _List of User Commands_
 
@@ -112,7 +112,7 @@ The current code coverage for the tests are following:
 - **Line coverage:** Has each executable line in the source file been executed?
 
 
-**NOTE:** You can see the code-coverage report in terminal as well as detailed HTML report inside `coverage/` folder.
+> **NOTE:** You can see the code-coverage report in terminal as well as detailed HTML report inside `coverage/` folder.
 Go to `coverage/` folder and open `index.html`.
 ## _Dependencies Used_
 
