@@ -9,7 +9,7 @@ var Service = require('../services/parking_lot_service.js'),
  *
  * @param {String} input entered via console
  * @description driver function for different commands for entered by users
- * calls respective functions of ParkingLot class based on commands
+ * calls respective functions of ParkingLotService based on commands
  */
 function processUserCommands(input) {
   var userCommand = input.split(' ')[0],
