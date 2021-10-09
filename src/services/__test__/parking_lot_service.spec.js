@@ -11,7 +11,7 @@ test('park car failed because no parking lot test', () => {
     throwError();
     expect(true).toBe(false);
   } catch (e) {
-    expect(e.message).toBe("Sorry, there is no parking lot created");
+    expect(e.message).toBe("Sorry, the parking lot has not been created");
   }
 })
 test('leave car failed because no parking lot test', () => {
@@ -20,7 +20,7 @@ test('leave car failed because no parking lot test', () => {
     throwError();
     expect(true).toBe(false);
   } catch (e) {
-    expect(e.message).toBe("Sorry, there is no parking lot created");
+    expect(e.message).toBe("Sorry, the parking lot has not been created");
   }
 })
 test('create parking lot test', () => {
@@ -62,6 +62,6 @@ test('leave car not found test', () => {
     throwError();
     expect(true).toBe(false);
   } catch (e) {
-    expect(e.message).toBe("Please provide Registration number");
+    expect(e.message).toBe("Please provide registration number");
   }
 })
