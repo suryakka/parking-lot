@@ -21,8 +21,8 @@ hour.
 
 ## _Pre requisites_
 
-[![GitHub top language](https://img.shields.io/github/languages/top/suryakka/parking-lot?label=NodeJS&logo=Node.js)](https://github.com/suryakka/parking-lott/) [![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/suryakka/parking-lot?logo=github&color=teal)](https://github.com/suryakka/parking-lot/) [![CodeFactor Grade](https://img.shields.io/codefactor/grade/github/suryakka/parking-lot/main?logo=codefactor&logoColor=white)
-](https://github.com/suryakka/parking-lot/)
+[![GitHub top language](https://img.shields.io/github/languages/top/suryakka/parking-lot?label=NodeJS&logo=Node.js)](https://img.shields.io/github/languages/top/suryakka/parking-lot?label=NodeJS&logo=Node.js) [![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/suryakka/parking-lot?logo=github&color=teal)](https://img.shields.io/github/languages/code-size/suryakka/parking-lot?logo=github&color=teal) [![CodeFactor Grade](https://img.shields.io/codefactor/grade/github/suryakka/parking-lot/main?logo=codefactor&logoColor=white)
+](https://img.shields.io/codefactor/grade/github/suryakka/parking-lot/main?logo=codefactor&logoColor=white)
 
 The source code for this project is written using [Node.js](https://nodejs.org/). Make sure you have [Node.js](https://nodejs.org/) installed on your computer before running this application, **if not please install Node.js from [here](https://nodejs.org/en/download/)**.
 
