@@ -1,6 +1,0 @@
-projectKey=parking_lot
-serverUrl=http://localhost:9000
-serverVersion=9.1.0.47736
-dashboardUrl=http://localhost:9000/dashboard?id=parking_lot
-ceTaskId=AXxpSYH-zC-PEyD-gkBC
-ceTaskUrl=http://localhost:9000/api/ce/task?id=AXxpSYH-zC-PEyD-gkBC
