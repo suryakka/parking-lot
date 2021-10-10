@@ -1,6 +1,6 @@
 const { COMMAND, COMMAND_LOG } = require('./user_commands_constant.js');
 
-chalk = require('chalk');
+const chalk = require('chalk');
 var Service = require('../services/parking_lot_service.js'),
   parkingLotService = new Service();
 

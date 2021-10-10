@@ -21,8 +21,9 @@ if (commandLineInputs[commandLineInputs.length - 1].endsWith('.txt')) {
       console.log(ERROR_LOAD_FILE);
     }
     var arr = data.split('\r\n');
-    for (var i = 0; i < arr.length; i++) {
-      processUserCommands(arr[i]);
+
+    for (const input of arr) {
+      processUserCommands(input);
     }
 
     // returning to console once all the inputs are processed
