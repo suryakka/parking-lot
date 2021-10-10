@@ -179,7 +179,7 @@ To run sonar-scanner,you need to open terminal and navigate (cd) to this folder 
 > **NOTE:** Make sure you have installed [Docker](https://www.docker.com/). Or if you have any issue in running [SonarQube Scanner](https://www.npmjs.com/package/sonarqube-scanner) you can read the tutorial [here](https://medium.com/swlh/nodejs-code-evaluation-using-jest-sonarqube-and-docker-f6b41b2c319d).
 ## _Screenshots_
 
-[![Statement](./assets/screenshot/overview.png)](https://github.com/suryakka/parking-lot/assets/screenshot/overview.png)
+[![overview](./assets/screenshot/overview.PNG)](https://github.com/suryakka/parking-lot/blob/main/assets/screenshot/overview.PNG)
 
 ## _Dependencies Used_
 
