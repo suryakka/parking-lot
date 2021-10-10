@@ -1,7 +1,6 @@
 # Parking Lot
 ## _Problem Statement_
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/bc67b5cce7eb4a558f2401af280c1e92)](https://app.codacy.com/gh/suryakka/parking-lot?utm_source=github.com&utm_medium=referral&utm_content=suryakka/parking-lot&utm_campaign=Badge_Grade_Settings)
-[![GitHub last commit](https://img.shields.io/github/last-commit/suryakka/parking-lot?logo=github)](https://github.com/suryakka/parking-lot/commits/main) ![Snyk Vulnerabilities for GitHub Repo](https://img.shields.io/snyk/vulnerabilities/github/suryakka/parking-lot?logo=snyk&color=red)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/bc67b5cce7eb4a558f2401af280c1e92)](https://app.codacy.com/gh/suryakka/parking-lot?utm_source=github.com&utm_medium=referral&utm_content=suryakka/parking-lot&utm_campaign=Badge_Grade_Settings) [![GitHub last commit](https://img.shields.io/github/last-commit/suryakka/parking-lot?logo=github)](https://github.com/suryakka/parking-lot/commits/main) ![Snyk Vulnerabilities for GitHub Repo](https://img.shields.io/snyk/vulnerabilities/github/suryakka/parking-lot?logo=snyk&color=red)
 
 - I own a parking lot that can hold up to ‘n’ cars at any given point in time. Each slot is
 given a number starting at 1 increasing with increasing distance from the entry point
