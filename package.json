@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node src/index.js",
     "test": "jest",
+    "test-lint": "node scripts/test-lint.js",
     "sonar": "node sonar-project.js",
     "test:cov": "npm run test -- --coverage",
     "test:badges": "npm run test:coverage  && jest-coverage-badges"
@@ -24,7 +25,10 @@
     "chalk": "3.0.0",
     "jest": "^27.2.4",
     "jest-sonar-reporter": "^2.0.0",
-    "sonarqube-scanner": "^2.8.1"
+    "sonarqube-scanner": "^2.8.1",
+    "async": "3.1.0",
+    "shelljs": "0.8.3",
+    "eslint": "6.6.0"
   },
   "jest": {
     "testEnvironment": "node",
