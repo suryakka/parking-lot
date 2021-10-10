@@ -91,6 +91,53 @@ Slot No.  Registration No.
 
 > **NOTE: Any commands which are not mentioned above will throw an error: `<INPUT> is an invalid command`**
 
+## Modules - OOPS Approach
+
+[![CodeFactor](https://www.codefactor.io/repository/github/suryakka/parking-lot/badge)](https://www.codefactor.io/repository/github/suryakka/parking-lot) [![Codacy Badge](https://app.codacy.com/project/badge/Grade/b493a8f776c94a4da8974878b5b8d799)](https://www.codacy.com/gh/suryakka/parking-lot/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=suryakka/parking-lot&amp;utm_campaign=Badge_Grade)
+
+### There are three modules defined:
+
+`processUserCommands()` : It is function to driver different commands for entered by users to calls respective functions of ParkingLotService based on commands
+
+> Note : if you want to read the list of user commands, please  refer [List of User Commands](#List-of-User-Commands) section.
+
+`ParkingLotService()`: It is the main class service which is used to initialize a parking lot. In each parking lot there is maximum number of slots and an array of slots that will be occupied by the car. It has following methods:
+
+- `createParkingLot(input)` : Creates a parking lot with given input. It throws an error `Minimum one slot is required to create parking slot` if zero or negative number (n <= 0) is provided as an input.
+
+- `parkCar(input)` : Allocates nearest slot from entry gate to the car. It can throw following errors:
+
+    - `Sorry, the parking lot has not been created` : When parking lot is not initialized.
+
+    - `Sorry, parking lot is full` : When parking lot has reached its maximum capacity.
+
+    - `Please provide registration number` : When input not contain Car registration number
+    
+    - `Car with registration number <REGISTRATION_NUMBER>  is already parked` : When parking the car with the same registration number in the parking lot
+
+- `leave(input)` : Removes car in given slot in parking lot. It throws following errors:
+
+    - `Sorry, the parking lot has not been created` : When parking lot is not initialized.
+
+    - `Please provide registration number` : When input not contain Car registration number
+  
+    - `Please provide parking duration` : When input not contain parking duration
+
+    - `Registration number <REGISTRATION_NUMBER> is not found` : When registration number entered is not found
+
+- `getParkingCharge(input)` : Return a parking charge. Charge applicable is $10 for first 2 hours and $10 for every additional hour
+- `getParkingStatus()` : Returns an array containing slot number, registration number and color. It throws an error `Sorry, the parking lot has not been created` if parking lot is empty.
+
+- `findNearestAvailableSlot()` : Finds nearest free slot.
+
+`Models` :
+- `Car()`
+    - `new Car(NUMBER)` : Constructor used to initialize a car object containing one field: registration number.
+- `ParkingLot()`
+    - `new ParkingLot(CAR, SLOT)` : Constructor used to initialize a ParkingLot object containing two field: Car model and slot.
+- `ParkingSlot()`
+    - `new ParkingSlot(MAX_PARKING_SLOTS, parkingSlots)` : Constructor used to initialize a ParkingSlot object containing two field: MAX_PARKING_SLOTS to define maximum of parking slots allowed and parkingSlots to define array for parking slots
+
 ## _Code Coverage_
 
 [![Statement](./assets/badge-statements.svg)](https://github.com/suryakka/parking-lot) [![Branch](./assets/badge-branches.svg)](https://github.com/suryakka/parking-lot) [![Function](./assets/badge-functions.svg)](https://github.com/suryakka/parking-lot) [![Lines](./assets/badge-lines.svg)](https://github.com/suryakka/parking-lot)
