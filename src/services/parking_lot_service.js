@@ -14,7 +14,7 @@ class ParkingLotService {
    * @description creates a parking lot with given maximum slot numbers.
    * It throws an error if zero or negative input is provided
    */
-  createParkingLot(input) {
+  createParkingLot (input) {
     parkingLot.MAX_PARKING_SLOTS = parseInt(input.split(' ')[1]);
 
     if (parkingLot.MAX_PARKING_SLOTS == 0 || !parkingLot.MAX_PARKING_SLOTS) {
@@ -35,7 +35,7 @@ class ParkingLotService {
    * It throws an error if no registration number provided.
    * It also throws an error if registration numbered entered is already parked.
    */
-  parkCar(input) {
+  parkCar (input) {
     if (parkingLot.MAX_PARKING_SLOTS > 0) {
       var carNumber;
       if (this.isParkingSlotAvailable(parkingLot.parkingSlots)) {
@@ -43,10 +43,10 @@ class ParkingLotService {
         if (carNumber == null) {
           throw new Error(ERROR_SERVICE.PLEASE_PROVIDE_REGIS_NUMBER);
         }
-        if (parkingLot.parkingSlots.find(element => element?.CAR?.NUMBER == carNumber)) {
+        if (parkingLot.parkingSlots.find((element) => element?.CAR?.NUMBER == carNumber)) {
           throw new Error(ERROR_SERVICE.CAR_WITH_REGIS_NUMBER + carNumber + ERROR_SERVICE.IS_ALREADY_PARKED);
         }
-        var index = parkingLot.parkingSlots.findIndex(element => element.CAR == null);
+        var index = parkingLot.parkingSlots.findIndex((element) => element.CAR == null);
         parkingLot.parkingSlots[index].CAR = new Car(carNumber);
         index = index + 1;
         return index;
@@ -68,16 +68,16 @@ class ParkingLotService {
    * It throws an error if no registration number or parking duration provided.
    * It also throws an error if registration numbered entered is not found.
    */
-  leave(input) {
+  leave (input) {
     if (parkingLot.MAX_PARKING_SLOTS > 0) {
       var carNumber = input.split(' ')[1];
       var hour = parseInt(input.split(' ')[2]);
       if (!carNumber) { throw new Error(ERROR_SERVICE.PLEASE_PROVIDE_REGIS_NUMBER); }
-      if (!parkingLot.parkingSlots.find(element => element?.CAR?.NUMBER == carNumber)) {
+      if (!parkingLot.parkingSlots.find((element) => element?.CAR?.NUMBER == carNumber)) {
         throw new Error(ERROR_SERVICE.REGISTRATION_NUMBER + carNumber + ERROR_SERVICE.NOT_FOUND);
       }
       if (hour) {
-        var index = parkingLot.parkingSlots.findIndex(element => element?.CAR?.NUMBER === carNumber);
+        var index = parkingLot.parkingSlots.findIndex((element) => element?.CAR?.NUMBER === carNumber);
 
         parkingLot.parkingSlots[index].CAR = null;
         return index + 1;
@@ -115,7 +115,7 @@ class ParkingLotService {
     var arr = new Array();
     if (parkingLot.MAX_PARKING_SLOTS > 0) {
       arr.push('Slot No. Registration.');
-      var slots = parkingLot.parkingSlots.filter(element => element.CAR != null);
+      var slots = parkingLot.parkingSlots.filter((element) => element.CAR != null);
       for (const slot of slots) {
         arr.push(slot.SLOT + 1 + '.  ' + slot.CAR.NUMBER);
       }

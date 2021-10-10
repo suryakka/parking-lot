@@ -11,7 +11,7 @@ var Service = require('../services/parking_lot_service.js'),
  * @description driver function for different commands for entered by users
  * calls respective functions of ParkingLotService based on commands
  */
-function processUserCommands(input) {
+function processUserCommands (input) {
   var userCommand = input.split(' ')[0],
     totalParkingSlots,
     parkingSlotNumber,
@@ -63,7 +63,7 @@ function processUserCommands(input) {
     case COMMAND.EXIT:
       process.exit(0);
     default:
-      console.log(chalk.red.bold(input+COMMAND_LOG.INVALID_COMMAND));
+      console.log(chalk.red.bold(input + COMMAND_LOG.INVALID_COMMAND));
       break;
   }
 
