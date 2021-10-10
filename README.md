@@ -1,6 +1,6 @@
 # Parking Lot
 ## _Problem Statement_
-[![GitHub last commit](https://img.shields.io/github/last-commit/suryakka/parking-lot?logo=github)](https://github.com/suryakka/parking-lott/) ![Snyk Vulnerabilities for GitHub Repo](https://img.shields.io/snyk/vulnerabilities/github/suryakka/parking-lot?logo=snyk&color=red)
+[![GitHub last commit](https://img.shields.io/github/last-commit/suryakka/parking-lot?logo=github)](https://github.com/suryakka/parking-lot/commits/main) ![Snyk Vulnerabilities for GitHub Repo](https://img.shields.io/snyk/vulnerabilities/github/suryakka/parking-lot?logo=snyk&color=red)
 
 - I own a parking lot that can hold up to ‘n’ cars at any given point in time. Each slot is
 given a number starting at 1 increasing with increasing distance from the entry point
