@@ -38,7 +38,7 @@ class ParkingLotService {
   parkCar(input) {
     if (parkingLot.MAX_PARKING_SLOTS > 0) {
       var carNumber;
-      if (this.isParkingSlotAvailable(parkingLot.parkingSlots) == true) {
+      if (this.isParkingSlotAvailable(parkingLot.parkingSlots)) {
         carNumber = input.split(' ')[1];
         if (carNumber == null) {
           throw new Error(ERROR_SERVICE.PLEASE_PROVIDE_REGIS_NUMBER);
@@ -47,10 +47,10 @@ class ParkingLotService {
           throw new Error(ERROR_SERVICE.CAR_WITH_REGIS_NUMBER + carNumber + ERROR_SERVICE.IS_ALREADY_PARKED);
         }
         var index = parkingLot.parkingSlots.findIndex(element => element.CAR == null);
-          parkingLot.parkingSlots[index].CAR = new Car(carNumber);
-          index = index + 1;
-          return index;
-        
+        parkingLot.parkingSlots[index].CAR = new Car(carNumber);
+        index = index + 1;
+        return index;
+
       }
       else {
         throw new Error(ERROR_SERVICE.PARKING_LOT_FULL);
@@ -78,10 +78,10 @@ class ParkingLotService {
       }
       if (hour) {
         var index = parkingLot.parkingSlots.findIndex(element => element?.CAR?.NUMBER === carNumber);
-    
-          parkingLot.parkingSlots[index].CAR = null;
-          return index + 1;
-   
+
+        parkingLot.parkingSlots[index].CAR = null;
+        return index + 1;
+
       } else {
         throw new Error(ERROR_SERVICE.PLEASE_PROVIDE_PARKING_DURATION);
       }
