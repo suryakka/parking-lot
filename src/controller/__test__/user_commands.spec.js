@@ -6,7 +6,7 @@ afterEach(() => {
   jest.resetAllMocks();
 });
 
-// describe("status command error test", () => {
+// describe('status command error test', () => {
 //   beforeEach(() => {
 //     console.log = jest.fn(); // create a new mock function for each test
 //   });
@@ -16,7 +16,7 @@ afterEach(() => {
 //     expect(consoleSpy).toHaveBeenCalledWith(chalk.red.bold('Sorry, parking lot is empty'));
 //   })
 // })
-describe("status command test", () => {
+describe('status command test', () => {
   beforeEach(() => {
     console.log = jest.fn(); // create a new mock function for each test
   });
@@ -28,17 +28,17 @@ describe("status command test", () => {
     const consoleSpy = jest.spyOn(console, 'log');
     processUserCommands('status');
     expect(consoleSpy).toHaveBeenCalledWith(chalk.red.bold(ERROR_SERVICE.NO_PARKING_LOT_CREATED));
-  })
+  });
   test('status success test', () => {
     const consoleSpy = jest.spyOn(console, 'log');
     var arr = new Array();
     arr.push('Slot No. Registration.');
-    arr.push('1.  KK-1234-II')
+    arr.push('1.  KK-1234-II');
     processUserCommands('status');
     expect(consoleSpy).toHaveBeenCalledWith(arr.join('\n'));
-  })
+  });
 });
-describe("create parking lot command test", () => {
+describe('create parking lot command test', () => {
   beforeEach(() => {
     console.log = jest.fn(); // create a new mock function for each test
   });
@@ -47,17 +47,14 @@ describe("create parking lot command test", () => {
     processUserCommands('create_parking_lot 6');
     expect(consoleSpy).toHaveBeenCalledWith(chalk.yellow.bold(COMMAND_LOG.CREATED_PARKING_LOT + '6' + COMMAND_LOG.SLOTS));
 
-  })
+  });
   test('create_parking_lot error test', () => {
     const consoleSpy = jest.spyOn(console, 'log');
     processUserCommands('create_parking_lot 0');
     expect(consoleSpy).toHaveBeenCalledWith(chalk.red.bold(ERROR_SERVICE.MINIMUM_ONE_SLOT));
-  })
-
-
-})
-  ;
-describe("park command test", () => {
+  });
+});
+describe('park command test', () => {
   beforeEach(() => {
     processUserCommands('create_parking_lot 2');
     console.log = jest.fn(); // create a new mock function for each test
@@ -66,21 +63,21 @@ describe("park command test", () => {
     const consoleSpy = jest.spyOn(console, 'log');
     processUserCommands('park KK-1234-HH');
     expect(consoleSpy).toHaveBeenCalledWith(chalk.green(COMMAND_LOG.ALLOCATED_SLOT + '1'));
-  })
+  });
   test('park error test', () => {
     const consoleSpy = jest.spyOn(console, 'log');
     processUserCommands('park');
     expect(consoleSpy).toHaveBeenCalledWith(chalk.red.bold(ERROR_SERVICE.PLEASE_PROVIDE_REGIS_NUMBER));
-  })
+  });
   test('park error because car already parked test', () => {
     processUserCommands('park SS');
     const consoleSpy = jest.spyOn(console, 'log');
     processUserCommands('park SS');
     expect(consoleSpy).toHaveBeenCalledWith(chalk.red.bold(ERROR_SERVICE.CAR_WITH_REGIS_NUMBER + 'SS' + ERROR_SERVICE.IS_ALREADY_PARKED));
-  })
+  });
 });
 
-describe("leave command test", () => {
+describe('leave command test', () => {
   beforeEach(() => {
     processUserCommands('create_parking_lot 6');
     processUserCommands('park KK-1234-HH');
@@ -90,31 +87,31 @@ describe("leave command test", () => {
     const consoleSpy = jest.spyOn(console, 'log');
     processUserCommands('leave KK-1234-HH 3');
     expect(consoleSpy).toHaveBeenCalledWith(chalk.blue(COMMAND_LOG.REGISTATION_NUMBER + 'KK-1234-HH' + COMMAND_LOG.WITH_SLOT_NUMBER + '1' + COMMAND_LOG.IS_FREE_WITH_CHARGE + '30'));
-  })
+  });
   test('leave success test', () => {
     const consoleSpy = jest.spyOn(console, 'log');
     processUserCommands('leave KK-1234-HH 1');
     expect(consoleSpy).toHaveBeenCalledWith(chalk.blue(COMMAND_LOG.REGISTATION_NUMBER + 'KK-1234-HH' + COMMAND_LOG.WITH_SLOT_NUMBER + '1' + COMMAND_LOG.IS_FREE_WITH_CHARGE + '20'));
-  })
+  });
   test('leave error test', () => {
     const consoleSpy = jest.spyOn(console, 'log');
     processUserCommands('leave KK-1234-HH');
     expect(consoleSpy).toHaveBeenCalledWith(chalk.red.bold(ERROR_SERVICE.PLEASE_PROVIDE_PARKING_DURATION));
-  })
+  });
 });
 
-describe("invalid command test", () => {
+describe('invalid command test', () => {
   beforeEach(() => {
     console.log = jest.fn(); // create a new mock function for each test
   });
   test('invalid command test', () => {
     const consoleSpy = jest.spyOn(console, 'log');
     processUserCommands('surya tamvan');
-    expect(consoleSpy).toHaveBeenCalledWith(chalk.red.bold('surya tamvan'+ COMMAND_LOG.INVALID_COMMAND));
-  })
+    expect(consoleSpy).toHaveBeenCalledWith(chalk.red.bold('surya tamvan' + COMMAND_LOG.INVALID_COMMAND));
+  });
 });
-describe("exit command test", () => {
+describe('exit command test', () => {
   const mockExit = jest.spyOn(process, 'exit').mockImplementation(() => { });
   processUserCommands('exit');
   expect(mockExit).toHaveBeenCalledWith(0);
-})
+});

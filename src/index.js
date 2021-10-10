@@ -3,8 +3,6 @@ const fs = require('fs'),
   readLine = require('readline');
 const { ERROR_LOAD_FILE } = require('./constants/error_constant.js');
 
-  
-
 var commandLineInputs = process.argv, // processing command line inputs
   interactiveMode = false;
 
@@ -39,8 +37,7 @@ else {
  * @description called when users want to interact via console
  * it process one command at a time
  */
-function openInteractiveConsole() {
-
+function openInteractiveConsole () {
   var prompts = readLine.createInterface({
     input: process.stdin,
     output: process.stdout,

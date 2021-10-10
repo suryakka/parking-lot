@@ -1,5 +1,6 @@
 
 const ParkingLotService = require('../../services/parking_lot_service.js'), fs = require('fs');
+require('jest');
 
 var commands = [],
   totalParkings,
@@ -11,18 +12,18 @@ test('park car failed because no parking lot test', () => {
     throwError();
     expect(true).toBe(false);
   } catch (e) {
-    expect(e.message).toBe("Sorry, the parking lot has not been created");
+    expect(e.message).toBe('Sorry, the parking lot has not been created');
   }
-})
+});
 test('leave car failed because no parking lot test', () => {
   try {
     parkingLot.leave('leave II');
     throwError();
     expect(true).toBe(false);
   } catch (e) {
-    expect(e.message).toBe("Sorry, the parking lot has not been created");
+    expect(e.message).toBe('Sorry, the parking lot has not been created');
   }
-})
+});
 test('create parking lot test', () => {
   fs.readFile('assets/input.txt', 'utf-8', function (err, data) {
     if (err) {
@@ -31,20 +32,20 @@ test('create parking lot test', () => {
     commands = JSON.parse(JSON.stringify(data)).split('\n');
     totalParkings = parkingLot.createParkingLot(commands[0]);
     expect(totalParkings).toEqual(6);
-  })
-})
+  });
+});
 
 test('park car full test', () => {
   try {
-    parkingLot.createParkingLot('create_parking_lot 1')
+    parkingLot.createParkingLot('create_parking_lot 1');
     parkingLot.parkCar('park HH');
     parkingLot.parkCar('park II');
     throwError();
     expect(true).toBe(false);
   } catch (e) {
-    expect(e.message).toBe("Sorry, parking lot is full");
+    expect(e.message).toBe('Sorry, parking lot is full');
   }
-})
+});
 
 test('leave car not found test', () => {
   try {
@@ -53,15 +54,15 @@ test('leave car not found test', () => {
     throwError();
     expect(true).toBe(false);
   } catch (e) {
-    expect(e.message).toBe("Registration number XX not found");
+    expect(e.message).toBe('Registration number XX not found');
   }
-})
+});
 test('leave car not found test', () => {
   try {
     parkingLot.leave('leave');
     throwError();
     expect(true).toBe(false);
   } catch (e) {
-    expect(e.message).toBe("Please provide registration number");
+    expect(e.message).toBe('Please provide registration number');
   }
-})
+});
