@@ -126,7 +126,7 @@ Slot No.  Registration No.
     - `Registration number <REGISTRATION_NUMBER> is not found` : When registration number entered is not found
 
 - `getParkingCharge(input)` : Return a parking charge. Charge applicable is $10 for first 2 hours and $10 for every additional hour
-- `getParkingStatus()` : Returns an array containing slot number, registration number and color. It throws an error `Sorry, the parking lot has not been created` if parking lot is empty.
+- `getParkingStatus()` : Returns an array containing slot number and registration number. It throws an error `Sorry, the parking lot has not been created` if parking lot is empty.
 
 - `findNearestAvailableSlot()` : Finds nearest free slot.
 
