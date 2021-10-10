@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node src/index.js",
     "test": "jest",
+    "sonar": "node sonar-project.js",
     "test:cov": "npm run test -- --coverage",
     "test:badges": "npm run test:coverage  && jest-coverage-badges"
   },
@@ -21,15 +22,24 @@
   "homepage": "https://github.com/suryakka/parking-lot#readme",
   "devDependencies": {
     "chalk": "3.0.0",
-    "jest": "^27.2.4"
+    "jest": "^27.2.4",
+    "jest-sonar-reporter": "^2.0.0",
+    "sonarqube-scanner": "^2.8.1"
   },
   "jest": {
+    "testEnvironment": "node",
     "coverageDirectory": "./coverage/",
     "collectCoverage": true,
+    "testResultsProcessor": "jest-sonar-reporter",
     "coverageReporters": [
       "json-summary",
       "text",
       "lcov"
     ]
+  },
+  "jestSonar": {
+    "reportPath": "coverage",
+    "reportFile": "test-reporter.xml",
+    "indent": 4
   }
 }
