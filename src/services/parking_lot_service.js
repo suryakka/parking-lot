@@ -116,8 +116,8 @@ class ParkingLotService {
     if (parkingLot.MAX_PARKING_SLOTS > 0) {
       arr.push('Slot No. Registration.');
       var slots = parkingLot.parkingSlots.filter(element => element.CAR != null);
-      for (var i = 0; i < slots.length; i++) {
-        arr.push(slots[i].SLOT + 1 + '.  ' + slots[i].CAR.NUMBER);
+      for (const slot of slots) {
+        arr.push(slot.SLOT + 1 + '.  ' + slot.CAR.NUMBER);
       }
       return arr;
     }
@@ -132,8 +132,9 @@ class ParkingLotService {
    */
   isParkingSlotAvailable() {
     var isAvailable = false;
-    for (var i = 0; i < parkingLot.parkingSlots.length; i++) {
-      if (parkingLot.parkingSlots[i].CAR == null) {
+
+    for (const slot of parkingLot.parkingSlots) {
+      if (slot.CAR == null) {
         isAvailable = true;
       }
     }
