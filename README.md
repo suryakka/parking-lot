@@ -137,6 +137,11 @@ Slot No.  Registration No.
     - `new ParkingLot(CAR, SLOT)` : Constructor used to initialize a ParkingLot object containing two field: Car model and slot.
 - `ParkingSlot()`
     - `new ParkingSlot(MAX_PARKING_SLOTS, parkingSlots)` : Constructor used to initialize a ParkingSlot object containing two field: MAX_PARKING_SLOTS to define maximum of parking slots allowed and parkingSlots to define array for parking slots
+    - 
+## _Lint test_
+
+`npm run test-lint` is used to run JavaScript lint tests. It detects the coding style issues. ESLint rules are defined in `.eslintrc.js` file.
+`node_modules/eslint/bin/eslint.js --fix src/` can be run to fix lint errors.
 
 ## _Code Coverage_
 
@@ -158,12 +163,28 @@ The current code coverage for the tests are following:
 - **Branch coverage:** Has each branch (also called DD-path) of each control structure (such as in if and case statements) been executed?
 - **Line coverage:** Has each executable line in the source file been executed?
 
-
 > **NOTE:** You can see the code-coverage report in terminal as well as detailed HTML report inside `coverage/` folder.
 Go to `coverage/` folder and open `index.html`.
-## _Dependencies Used_
 
+## _Sonarqube Scan_
+SonarQube is an open source platform developed by SonarSource for continuous code quality inspection, to perform automatic reviews with static code analysis to detect bugs, code odors and security vulnerabilities in over 20 languages. programming.
+
+To run sonar-scanner,you need to open terminal and navigate (cd) to this folder and type followings command :
+```bash
+1. docker-compose -f docker-compose.sonar.yml up -d
+2. npm install
+3. npm run test
+4. npm sonar
+```
+> **NOTE:** Make sure you have installed [Docker](https://www.docker.com/). Or if you have any issue in running [SonarQube Scanner](https://www.npmjs.com/package/sonarqube-scanner) you can read the tutorial [here](https://medium.com/swlh/nodejs-code-evaluation-using-jest-sonarqube-and-docker-f6b41b2c319d).
+## _Screenshots_
+
+[![Statement](./assets/screenshot/overview.png)](https://github.com/suryakka/parking-lot/assets/screenshot/overview.png)
+
+## _Dependencies Used_
 
 - [Chalk](https://www.npmjs.com/package/chalk) : A npm module used to style terminal string. Learn more [here](https://www.npmjs.com/package/chalk).
 - [Jest](https://www.npmjs.com/package/jest) : A JavaScript test framework for Node.js programs. Learn more [here](https://www.npmjs.com/package/jest).
+- [ESLint](https://eslint.org/): A static code analysis tool for identifying problematic patterns found in JavaScript code. It covers both code quality and coding style issues. Learn more [here](https://eslint.org/).
+- [SonarQube Scanner](https://www.npmjs.com/package/sonarqube-scanner): Code Security for more languages, with more rules, better detection and improved workflows. Learn more [here](https://www.npmjs.com/package/sonarqube-scanner).
 
