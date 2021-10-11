@@ -1,10 +1,10 @@
 
-var ParkingLot = require('../models/parking_lot.js');
+var ParkingSlot = require('../models/parking_slot.js');
 var Car = require('../models/car.js');
-const ParkingSlot = require('../models/parking_slot.js');
+const ParkingLot = require('../models/parking_lot.js');
 const ERROR_SERVICE = require('./parking_lot_service_constant.js');
 
-var parkingLot = new ParkingSlot();
+var parkingLot = new ParkingLot();
 
 class ParkingLotService {
 
@@ -23,7 +23,7 @@ class ParkingLotService {
     }
     parkingLot.parkingSlots = [];
     for (var i = 0; i < parkingLot.MAX_PARKING_SLOTS; i++) {
-      parkingLot.parkingSlots.push(new ParkingLot(null, i));
+      parkingLot.parkingSlots.push(new ParkingSlot(null, i));
     }
     return parkingLot.MAX_PARKING_SLOTS;
   }
