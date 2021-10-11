@@ -131,13 +131,13 @@ Slot No.  Registration No.
 - `findNearestAvailableSlot()` : Finds nearest free slot.
 
 `Models` :
+- `ParkingLot()`
+    - `new ParkingLot(MAX_PARKING_SLOTS, parkingSlots)` : Constructor used to initialize a ParkingLot object containing two field: MAX_PARKING_SLOTS to define maximum of parking slots allowed and parkingSlots to define array for parking slots
 - `Car()`
     - `new Car(NUMBER)` : Constructor used to initialize a car object containing one field: registration number.
-- `ParkingLot()`
-    - `new ParkingLot(CAR, SLOT)` : Constructor used to initialize a ParkingLot object containing two field: Car model and slot.
 - `ParkingSlot()`
-    - `new ParkingSlot(MAX_PARKING_SLOTS, parkingSlots)` : Constructor used to initialize a ParkingSlot object containing two field: MAX_PARKING_SLOTS to define maximum of parking slots allowed and parkingSlots to define array for parking slots
-    - 
+    - `new ParkingSlot(CAR, SLOT)` : Constructor used to initialize a ParkingSlot object containing two field: Car model and slot.
+    
 ## _Lint test_
 
 `npm run test-lint` is used to run JavaScript lint tests. It detects the coding style issues. ESLint rules are defined in `.eslintrc.js` file.
