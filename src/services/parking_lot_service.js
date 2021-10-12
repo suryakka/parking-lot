@@ -133,7 +133,6 @@ class ParkingLotService {
   isParkingSlotAvailable() {
     for (const slot of parkingLot.parkingSlots) {
       if (slot.CAR == null) {
-        isAvailable = true;
         return slot.SLOT
       }
     }
