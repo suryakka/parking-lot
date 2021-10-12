@@ -6,63 +6,37 @@ var commands = [],
   totalParkings,
   parkingLot = new ParkingLotService();
 
+
 test('park car failed because no parking lot test', () => {
-  try {
-    parkingLot.parkCar('park II');
-    throwError();
-    expect(true).toBe(false);
-  } catch (e) {
-    expect(e.message).toBe('Sorry, the parking lot has not been created');
-  }
+  expect(() => parkingLot.parkCar('park II')).toThrow('Sorry, the parking lot has not been created');
 });
+
 test('leave car failed because no parking lot test', () => {
-  try {
-    parkingLot.leave('leave II');
-    throwError();
-    expect(true).toBe(false);
-  } catch (e) {
-    expect(e.message).toBe('Sorry, the parking lot has not been created');
-  }
+  expect(() => parkingLot.leave('leave II')).toThrow('Sorry, the parking lot has not been created');
 });
+
 test('create parking lot test', () => {
-  fs.readFile('assets/input.txt', 'utf-8', function (err, data) {
-    if (err) {
-      throw 'Unable to read input test file';
-    }
-    commands = JSON.parse(JSON.stringify(data)).split('\n');
-    totalParkings = parkingLot.createParkingLot(commands[0]);
-    expect(totalParkings).toEqual(6);
-  });
+  totalParkings = parkingLot.createParkingLot('create_parking_lot 6');
+  expect(totalParkings).toEqual(6);
 });
 
 test('park car full test', () => {
-  try {
+  expect(() => {
     parkingLot.createParkingLot('create_parking_lot 1');
     parkingLot.parkCar('park HH');
     parkingLot.parkCar('park II');
-    throwError();
-    expect(true).toBe(false);
-  } catch (e) {
-    expect(e.message).toBe('Sorry, parking lot is full');
-  }
+  }).toThrow('Sorry, parking lot is full');
 });
 
 test('leave car not found test', () => {
-  try {
+  expect(() => {
     parkingLot.createParkingLot('create_parking_lot 2');
     parkingLot.leave('leave XX 3');
-    throwError();
-    expect(true).toBe(false);
-  } catch (e) {
-    expect(e.message).toBe('Registration number XX not found');
-  }
+  }).toThrow('Registration number XX not found');
 });
+
 test('leave car not found test', () => {
-  try {
+  expect(() => {
     parkingLot.leave('leave');
-    throwError();
-    expect(true).toBe(false);
-  } catch (e) {
-    expect(e.message).toBe('Please provide registration number');
-  }
+  }).toThrow('Please provide registration number');
 });
