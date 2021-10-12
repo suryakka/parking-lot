@@ -14,7 +14,7 @@ class ParkingLotService {
    * @description creates a parking lot with given maximum slot numbers.
    * It throws an error if zero or negative input is provided
    */
-  createParkingLot (input) {
+  createParkingLot(input) {
     parkingLot.MAX_PARKING_SLOTS = parseInt(input.split(' ')[1]);
 
     if (parkingLot.MAX_PARKING_SLOTS == 0 || !parkingLot.MAX_PARKING_SLOTS) {
@@ -35,10 +35,11 @@ class ParkingLotService {
    * It throws an error if no registration number provided.
    * It also throws an error if registration numbered entered is already parked.
    */
-  parkCar (input) {
+  parkCar(input) {
     if (parkingLot.MAX_PARKING_SLOTS > 0) {
       var carNumber;
-      if (this.isParkingSlotAvailable(parkingLot.parkingSlots)) {
+      var index = this.isParkingSlotAvailable(parkingLot.parkingSlots);
+      if (index != null) {
         carNumber = input.split(' ')[1];
         if (carNumber == null) {
           throw new Error(ERROR_SERVICE.PLEASE_PROVIDE_REGIS_NUMBER);
@@ -46,7 +47,6 @@ class ParkingLotService {
         if (parkingLot.parkingSlots.find((element) => element?.CAR?.NUMBER == carNumber)) {
           throw new Error(ERROR_SERVICE.CAR_WITH_REGIS_NUMBER + carNumber + ERROR_SERVICE.IS_ALREADY_PARKED);
         }
-        var index = parkingLot.parkingSlots.findIndex((element) => element.CAR == null);
         parkingLot.parkingSlots[index].CAR = new Car(carNumber);
         index = index + 1;
         return index;
@@ -68,7 +68,7 @@ class ParkingLotService {
    * It throws an error if no registration number or parking duration provided.
    * It also throws an error if registration numbered entered is not found.
    */
-  leave (input) {
+  leave(input) {
     if (parkingLot.MAX_PARKING_SLOTS > 0) {
       var carNumber = input.split(' ')[1];
       var hour = parseInt(input.split(' ')[2]);
@@ -131,14 +131,13 @@ class ParkingLotService {
    * @description check parking slot is available or not.
    */
   isParkingSlotAvailable() {
-    var isAvailable = false;
-
     for (const slot of parkingLot.parkingSlots) {
       if (slot.CAR == null) {
         isAvailable = true;
+        return slot.SLOT
       }
     }
-    return isAvailable;
+    return null;
   }
 
 }
