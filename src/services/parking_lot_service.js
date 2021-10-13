@@ -1,10 +1,7 @@
 
 var ParkingSlot = require('../models/parking_slot.js');
 var Car = require('../models/car.js');
-const ParkingLot = require('../models/parking_lot.js');
-const ERROR_SERVICE = require('./parking_lot_service_constant.js');
 
-// var parkingLot = new ParkingLot();
 
 class ParkingLotService {
 
