@@ -1,19 +1,17 @@
 
 const ParkingLot = require('../../models/parking_lot.js');
 const ParkingLotService = require('../../services/parking_lot_service.js');
-var parkingLot = new ParkingLot();
 require('jest');
 
-var
-  parkingLotService = new ParkingLotService(parkingLot);
+var parkingLotService;
+var parkingLot = new ParkingLot();
 
 beforeEach(() => {
-  parkingLot.MAX_PARKING_SLOTS = 0;
-  parkingLot.parkingSlots = [];
+  parkingLotService = new ParkingLotService(parkingLot);
 });
 
 test('get parking status test', () => {
-  var status = parkingLotService.isParkingSlotAvailable(parkingLot);
+  var status = parkingLotService.isParkingSlotAvailable();
   expect(status).toEqual(null);
 });
 
@@ -23,7 +21,13 @@ test('create parking lot test', () => {
 });
 
 test('park car test', () => {
-parkingLotService.createParkingLot(6);
+  parkingLotService.createParkingLot(6);
   var status = parkingLotService.parkCar('KK-HH');
+  expect(status).toEqual(1);
+});
+
+test('leave car test', () => {
+  parkingLotService.createParkingLot(6);
+  var status = parkingLotService.leave('KK-HH');
   expect(status).toEqual(1);
 });
