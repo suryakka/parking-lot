@@ -16,6 +16,23 @@ afterEach(() => {
 //     expect(consoleSpy).toHaveBeenCalledWith(chalk.red.bold('Sorry, parking lot is empty'));
 //   })
 // })
+
+describe('no parking lot created test', () => {
+  beforeEach(() => {
+    console.log = jest.fn(); // create a new mock function for each test
+  });
+  test('park car failed because no parking lot test', () => {
+    const consoleSpy = jest.spyOn(console, 'log');
+    processUserCommands('park II');
+    expect(consoleSpy).toHaveBeenCalledWith(chalk.red.bold('Sorry, the parking lot has not been created'));
+  });
+  test('park car failed because no parking lot test', () => {
+    const consoleSpy = jest.spyOn(console, 'log');
+    processUserCommands('leave II');
+    expect(consoleSpy).toHaveBeenCalledWith(chalk.red.bold('Sorry, the parking lot has not been created'));
+  });
+});
+
 describe('status command test', () => {
   beforeEach(() => {
     console.log = jest.fn(); // create a new mock function for each test
@@ -55,6 +72,7 @@ describe('create parking lot command test', () => {
   });
 });
 describe('park command test', () => {
+
   beforeEach(() => {
     processUserCommands('create_parking_lot 2');
     console.log = jest.fn(); // create a new mock function for each test
@@ -75,6 +93,16 @@ describe('park command test', () => {
     processUserCommands('park SS');
     expect(consoleSpy).toHaveBeenCalledWith(chalk.red.bold(ERROR_SERVICE.CAR_WITH_REGIS_NUMBER + 'SS' + ERROR_SERVICE.IS_ALREADY_PARKED));
   });
+
+  test('park car full test', () => {
+    processUserCommands('create_parking_lot 1');
+    processUserCommands('park HH');
+    const consoleSpy = jest.spyOn(console, 'log');
+    processUserCommands('park II');
+    expect(consoleSpy).toHaveBeenCalledWith(chalk.red.bold('Sorry, parking lot is full'));
+  });
+
+
 });
 
 describe('leave command test', () => {
@@ -97,6 +125,17 @@ describe('leave command test', () => {
     const consoleSpy = jest.spyOn(console, 'log');
     processUserCommands('leave KK-1234-HH');
     expect(consoleSpy).toHaveBeenCalledWith(chalk.red.bold(ERROR_SERVICE.PLEASE_PROVIDE_PARKING_DURATION));
+  });
+  test('leave error no registration number test', () => {
+    const consoleSpy = jest.spyOn(console, 'log');
+    processUserCommands('leave ');
+    expect(consoleSpy).toHaveBeenCalledWith(chalk.red.bold(ERROR_SERVICE.PLEASE_PROVIDE_REGIS_NUMBER));
+  });
+  test('leave car not found test', () => {
+    processUserCommands('create_parking_lot 1');
+    const consoleSpy = jest.spyOn(console, 'log');
+    processUserCommands('leave II');
+    expect(consoleSpy).toHaveBeenCalledWith(chalk.red.bold('Registration number II not found'));
   });
 });
 
