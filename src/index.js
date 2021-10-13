@@ -25,7 +25,7 @@ if (commandLineInputs[commandLineInputs.length - 1].endsWith('.txt')) {
     }
 
     // returning to console once all the inputs are processed
-    process.exit(1);
+    process.exit(0);
   });
 }
 else {
@@ -37,7 +37,7 @@ else {
  * @description called when users want to interact via console
  * it process one command at a time
  */
-function openInteractiveConsole () {
+function openInteractiveConsole() {
   var prompts = readLine.createInterface({
     input: process.stdin,
     output: process.stdout,
@@ -47,8 +47,12 @@ function openInteractiveConsole () {
   // option for user to enter commands
   if (interactiveMode) {
     prompts.question('Input: ', function (data) {
-      processUserCommands(data);
-      openInteractiveConsole();
+      var proc = processUserCommands(data);
+      if (proc != 0) {
+        openInteractiveConsole();
+      } else {
+        process.exit(0);
+      }
     });
   }
 }

@@ -111,7 +111,6 @@ describe('invalid command test', () => {
   });
 });
 describe('exit command test', () => {
-  const mockExit = jest.spyOn(process, 'exit').mockImplementation(() => { });
-  processUserCommands('exit');
-  expect(mockExit).toHaveBeenCalledWith(0);
+  var process = processUserCommands('exit');
+  expect(process).toBe(0);
 });
