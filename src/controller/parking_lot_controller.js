@@ -7,6 +7,7 @@ var parkingLotService = new Service(parkingLot);
 
 
 class ParkingLotController {
+
   /**
    * @param {String} input user's input via terminal
    * @description It logs create a parking lot with given maximum slot numbers.

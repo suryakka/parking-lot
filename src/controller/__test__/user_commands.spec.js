@@ -17,22 +17,6 @@ afterEach(() => {
 //   })
 // })
 
-describe('no parking lot created test', () => {
-  beforeEach(() => {
-    console.log = jest.fn(); // create a new mock function for each test
-  });
-  test('park car failed because no parking lot test', () => {
-    const consoleSpy = jest.spyOn(console, 'log');
-    processUserCommands('park II');
-    expect(consoleSpy).toHaveBeenCalledWith(chalk.red.bold('Sorry, the parking lot has not been created'));
-  });
-  test('park car failed because no parking lot test', () => {
-    const consoleSpy = jest.spyOn(console, 'log');
-    processUserCommands('leave II');
-    expect(consoleSpy).toHaveBeenCalledWith(chalk.red.bold('Sorry, the parking lot has not been created'));
-  });
-});
-
 describe('status command test', () => {
   beforeEach(() => {
     console.log = jest.fn(); // create a new mock function for each test
