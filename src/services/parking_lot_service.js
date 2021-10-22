@@ -1,95 +1,48 @@
 
 var ParkingSlot = require('../models/parking_slot.js');
 var Car = require('../models/car.js');
-const ParkingLot = require('../models/parking_lot.js');
-const ERROR_SERVICE = require('./parking_lot_service_constant.js');
 
-var parkingLot = new ParkingLot();
 
 class ParkingLotService {
 
+  constructor(parkingLot) {
+    this.parkingLot = parkingLot;
+  }
+
   /**
-   *
    * @param {String} input user's input via terminal
    * @description creates a parking lot with given maximum slot numbers.
-   * It throws an error if zero or negative input is provided
    */
-  createParkingLot (input) {
-    parkingLot.MAX_PARKING_SLOTS = parseInt(input.split(' ')[1]);
-
-    if (parkingLot.MAX_PARKING_SLOTS == 0 || !parkingLot.MAX_PARKING_SLOTS) {
-      // minimum: 1 slot
-      throw new Error(ERROR_SERVICE.MINIMUM_ONE_SLOT);
+  createParkingLot(input) {
+    this.parkingLot.MAX_PARKING_SLOTS = input;
+    this.parkingLot.parkingSlots = [];
+    for (var i = 0; i < this.parkingLot.MAX_PARKING_SLOTS; i++) {
+      this.parkingLot.parkingSlots.push(new ParkingSlot(null, i));
     }
-    parkingLot.parkingSlots = [];
-    for (var i = 0; i < parkingLot.MAX_PARKING_SLOTS; i++) {
-      parkingLot.parkingSlots.push(new ParkingSlot(null, i));
-    }
-    return parkingLot.MAX_PARKING_SLOTS;
+    return this.parkingLot.MAX_PARKING_SLOTS;
   }
 
   /**
    * @param {String} input user's input via terminal
    * @description allocates nearest slot number to incoming cars.
-   * It throws an error if parking lot is empty or full.
-   * It throws an error if no registration number provided.
-   * It also throws an error if registration numbered entered is already parked.
    */
-  parkCar (input) {
-    if (parkingLot.MAX_PARKING_SLOTS > 0) {
-      var carNumber;
-      if (this.isParkingSlotAvailable(parkingLot.parkingSlots)) {
-        carNumber = input.split(' ')[1];
-        if (carNumber == null) {
-          throw new Error(ERROR_SERVICE.PLEASE_PROVIDE_REGIS_NUMBER);
-        }
-        if (parkingLot.parkingSlots.find((element) => element?.CAR?.NUMBER == carNumber)) {
-          throw new Error(ERROR_SERVICE.CAR_WITH_REGIS_NUMBER + carNumber + ERROR_SERVICE.IS_ALREADY_PARKED);
-        }
-        var index = parkingLot.parkingSlots.findIndex((element) => element.CAR == null);
-        parkingLot.parkingSlots[index].CAR = new Car(carNumber);
-        index = index + 1;
-        return index;
-
-      }
-      else {
-        throw new Error(ERROR_SERVICE.PARKING_LOT_FULL);
-      }
-    } else {
-      throw new Error(ERROR_SERVICE.NO_PARKING_LOT_CREATED);
-    }
+  parkCar(input) {
+    var index = this.isParkingSlotAvailable(this.parkingLot.parkingSlots);
+    this.parkingLot.parkingSlots[index].CAR = new Car(input);
+    index = index + 1;
+    return index;
   }
 
+
   /**
-   *
    * @param {String} input user's input via terminal
    * @description it makes the slot free for the car of given registration number.
-   * It throws an error if parking lot is empty.
-   * It throws an error if no registration number or parking duration provided.
-   * It also throws an error if registration numbered entered is not found.
    */
-  leave (input) {
-    if (parkingLot.MAX_PARKING_SLOTS > 0) {
-      var carNumber = input.split(' ')[1];
-      var hour = parseInt(input.split(' ')[2]);
-      if (!carNumber) { throw new Error(ERROR_SERVICE.PLEASE_PROVIDE_REGIS_NUMBER); }
-      if (!parkingLot.parkingSlots.find((element) => element?.CAR?.NUMBER == carNumber)) {
-        throw new Error(ERROR_SERVICE.REGISTRATION_NUMBER + carNumber + ERROR_SERVICE.NOT_FOUND);
-      }
-      if (hour) {
-        var index = parkingLot.parkingSlots.findIndex((element) => element?.CAR?.NUMBER === carNumber);
-
-        parkingLot.parkingSlots[index].CAR = null;
-        return index + 1;
-
-      } else {
-        throw new Error(ERROR_SERVICE.PLEASE_PROVIDE_PARKING_DURATION);
-      }
-    }
-    else {
-      throw new Error(ERROR_SERVICE.NO_PARKING_LOT_CREATED);
-    }
-
+  leave(input) {
+    var carNumber = input.split(' ')[1];
+    var index = this.parkingLot.parkingSlots.findIndex((element) => element?.CAR?.NUMBER === carNumber);
+    this.parkingLot.parkingSlots[index].CAR = null;
+    return index + 1;
   }
 
 
@@ -109,21 +62,15 @@ class ParkingLotService {
 
   /**
    * @description Returns an array containing parking details i.e. slot no, registration number
-   * It throws an error if parking lot is empty.
    */
   getParkingStatus() {
     var arr = new Array();
-    if (parkingLot.MAX_PARKING_SLOTS > 0) {
-      arr.push('Slot No. Registration.');
-      var slots = parkingLot.parkingSlots.filter((element) => element.CAR != null);
-      for (const slot of slots) {
-        arr.push(slot.SLOT + 1 + '.  ' + slot.CAR.NUMBER);
-      }
-      return arr;
+    arr.push('Slot No. Registration.');
+    var slots = this.parkingLot.parkingSlots.filter((element) => element.CAR != null);
+    for (const slot of slots) {
+      arr.push(slot.SLOT + 1 + '.  ' + slot.CAR.NUMBER);
     }
-    else {
-      throw new Error(ERROR_SERVICE.NO_PARKING_LOT_CREATED);
-    }
+    return arr;
   }
 
 
@@ -131,16 +78,13 @@ class ParkingLotService {
    * @description check parking slot is available or not.
    */
   isParkingSlotAvailable() {
-    var isAvailable = false;
-
-    for (const slot of parkingLot.parkingSlots) {
+    for (const slot of this.parkingLot.parkingSlots) {
       if (slot.CAR == null) {
-        isAvailable = true;
+        return slot.SLOT
       }
     }
-    return isAvailable;
+    return null;
   }
-
 }
 
 module.exports = ParkingLotService;

@@ -174,7 +174,7 @@ To run sonar-scanner,you need to open terminal and navigate (cd) to this folder 
 1. docker-compose -f docker-compose.sonar.yml up -d
 2. npm install
 3. npm run test
-4. npm sonar
+4. npm run sonar
 ```
 > **NOTE:** Make sure you have installed [Docker](https://www.docker.com/). Or if you have any issue in running [SonarQube Scanner](https://www.npmjs.com/package/sonarqube-scanner) you can read the tutorial [here](https://medium.com/swlh/nodejs-code-evaluation-using-jest-sonarqube-and-docker-f6b41b2c319d).
 ## _Screenshots_

@@ -1,68 +1,33 @@
 
-const ParkingLotService = require('../../services/parking_lot_service.js'), fs = require('fs');
+const ParkingLot = require('../../models/parking_lot.js');
+const ParkingLotService = require('../../services/parking_lot_service.js');
 require('jest');
 
-var commands = [],
-  totalParkings,
-  parkingLot = new ParkingLotService();
+var parkingLotService;
+var parkingLot = new ParkingLot();
 
-test('park car failed because no parking lot test', () => {
-  try {
-    parkingLot.parkCar('park II');
-    throwError();
-    expect(true).toBe(false);
-  } catch (e) {
-    expect(e.message).toBe('Sorry, the parking lot has not been created');
-  }
+beforeEach(() => {
+  parkingLotService = new ParkingLotService(parkingLot);
 });
-test('leave car failed because no parking lot test', () => {
-  try {
-    parkingLot.leave('leave II');
-    throwError();
-    expect(true).toBe(false);
-  } catch (e) {
-    expect(e.message).toBe('Sorry, the parking lot has not been created');
-  }
+
+test('get parking status test', () => {
+  var status = parkingLotService.isParkingSlotAvailable();
+  expect(status).toEqual(null);
 });
+
 test('create parking lot test', () => {
-  fs.readFile('assets/input.txt', 'utf-8', function (err, data) {
-    if (err) {
-      throw 'Unable to read input test file';
-    }
-    commands = JSON.parse(JSON.stringify(data)).split('\n');
-    totalParkings = parkingLot.createParkingLot(commands[0]);
-    expect(totalParkings).toEqual(6);
-  });
+  var totalParkings = parkingLotService.createParkingLot(6);
+  expect(totalParkings).toBe(6);
 });
 
-test('park car full test', () => {
-  try {
-    parkingLot.createParkingLot('create_parking_lot 1');
-    parkingLot.parkCar('park HH');
-    parkingLot.parkCar('park II');
-    throwError();
-    expect(true).toBe(false);
-  } catch (e) {
-    expect(e.message).toBe('Sorry, parking lot is full');
-  }
+test('park car test', () => {
+  parkingLotService.createParkingLot(6);
+  var status = parkingLotService.parkCar('KK-HH');
+  expect(status).toEqual(1);
 });
 
-test('leave car not found test', () => {
-  try {
-    parkingLot.createParkingLot('create_parking_lot 2');
-    parkingLot.leave('leave XX 3');
-    throwError();
-    expect(true).toBe(false);
-  } catch (e) {
-    expect(e.message).toBe('Registration number XX not found');
-  }
-});
-test('leave car not found test', () => {
-  try {
-    parkingLot.leave('leave');
-    throwError();
-    expect(true).toBe(false);
-  } catch (e) {
-    expect(e.message).toBe('Please provide registration number');
-  }
+test('leave car test', () => {
+  parkingLotService.createParkingLot(6);
+  var status = parkingLotService.leave('KK-HH');
+  expect(status).toEqual(1);
 });
